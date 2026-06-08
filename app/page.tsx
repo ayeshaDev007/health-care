@@ -10,6 +10,7 @@ import { Faq } from "./components/Faq";
 import { FinalCta } from "./components/FinalCta";
 import { Footer } from "./components/Footer";
 import { buildStructuredData } from "./lib/structured-data";
+import Link from "next/link";
 
 export default function Home() {
   const structuredData = buildStructuredData();
@@ -21,12 +22,12 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <a
+      <Link
         href="#main"
         className="absolute left-3 top-[-120px] z-[100] rounded-b-[10px] bg-brand px-5 py-3 font-bold text-white transition-[top] duration-200 focus:top-0"
       >
         Skip to content
-      </a>
+      </Link>
 
       <Header />
 
