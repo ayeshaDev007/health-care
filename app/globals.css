@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — exposed as Tailwind v4 theme variables.
+   These generate utilities like bg-brand, text-ink-soft,
+   shadow-float, rounded-card, font-serif, lg:, ease-smooth, etc.
+   ============================================================ */
+@theme {
+  --color-sand: #fbf8f2;
+  --color-sand2: #f3ede2;
+  --color-paper: #ffffff;
+  --color-ink: #1b2723;
+  --color-ink-soft: #46544e;
+  --color-brand: #2e5c4b;
+  --color-brand-dark: #234a3c;
+  --color-brand-soft: #dce8e0;
+  --color-sage: #ebf1eb;
+  --color-accent: #d9824f;
+  --color-accent-soft: #f6e5d8;
+  --color-line: #e4dccd;
+
+  --font-sans: var(--font-mulish), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+
+  --shadow-soft: 0 1px 2px rgba(27, 39, 35, 0.05), 0 4px 16px rgba(27, 39, 35, 0.05);
+  --shadow-float: 0 8px 40px rgba(27, 39, 35, 0.1);
+
+  --radius-card: 18px;
+
+  --ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Breakpoints mirror the original design: 681px tablet, 981px desktop */
+  --breakpoint-sm: 481px;
+  --breakpoint-md: 681px;
+  --breakpoint-lg: 981px;
+  --breakpoint-xl: 1180px;
+
+  --header-h: 74px;
+}
+
+/* ============================================================
+   Base layer — global resets & element defaults
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-sand text-ink font-sans antialiased;
+    line-height: 1.6;
+    font-size: 17px;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif font-medium text-ink;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Offset in-page anchors so the sticky header never covers headings */
+  :target,
+  section[id],
+  [id].scroll-anchor {
+    scroll-margin-top: var(--header-h);
+  }
+
+  /* Visible focus styles for keyboard users (a11y) */
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 680px) {
+    body {
+      font-size: 16px;
+    }
+  }
+
+  /* Respect users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
